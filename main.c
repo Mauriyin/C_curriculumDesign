@@ -1376,7 +1376,7 @@ void login(GtkWidget *widget,gpointer data)
     pwd = gtk_entry_get_text(GTK_ENTRY(wgt->entry_pwd));
     if((strcmp(name,NAME) == 0) && (strcmp(pwd,PWD) == 0))
     {
-        gtk_label_set_text(GTK_LABEL(wgt->label_tips),"Welcome to AchsMIS");
+        gtk_label_set_text(GTK_LABEL(wgt->label_tips),"Welcome to MineMIS");
         gtk_widget_show_all(window);
         gtk_widget_hide(wgt->window);
     }
@@ -1571,7 +1571,7 @@ void Add_node(GtkWidget *button,struct nodecreate *nodec)
             pNew->grade_mine = atof(str);
 
 
-            if((ppur=insert_SUP(pNew))!=NULL) //使用insert_ACHS函数
+            if((ppur=insert_SUP(pNew))!=NULL) //使用insert_SUP函数
             {
                 gtk_tree_store_append(treestore,&pNew->iter,&ppur->iter);/*添加条目*/
                 gtk_tree_store_set(treestore,&pNew->iter,        /*设置新添加条目的文本显示*/
@@ -1604,7 +1604,7 @@ void Add_node(GtkWidget *button,struct nodecreate *nodec)
             pNew->grade_mine = atof(str);
 
 
-            if((psup=insert_TRANS(pNew))!=NULL) //使用insert_MEMBER函数
+            if((psup=insert_TRANS(pNew))!=NULL) //使用insert_TRANS函数
             {
                 gtk_tree_store_append(treestore,&pNew->iter,&psup->iter);/*添加条目*/
                 gtk_tree_store_set(treestore,&pNew->iter,        /*设置新添加条目的文本显示*/
@@ -1629,7 +1629,7 @@ void Add_node(GtkWidget *button,struct nodecreate *nodec)
     }
 }
 
-//函数名：insert_ACHS
+//函数名：insert_SUP
 //功能：插入科技成果节点函数，由Add_Node中情况3调用
 //输入参数：pNew 指向新节点的指针
 //返回值：对应单位节点指针
@@ -1655,7 +1655,7 @@ PUR_COM * insert_SUP(SUP_COM *pNew)
     return(ppur);
 }
 
-//函数名：insert_ACHS
+//函数名：insert_SUP
 //功能：插入完成人员节点函数，由Add_Node中情况4调用
 //输入参数：pNew 指向新节点的指针
 //返回值：对应科技成果节点指针
@@ -1809,7 +1809,7 @@ int Del_pur(char *name)
     }
 }
 
-//函数名：Del_Achs
+//函数名：Del_SUP
 //功能：删除科技成果节点，由Del_Node函数case 3调用
 //输入参数：name 科技成果名称，P_name 对应单位名称
 //返回值：int 1为有错，0为正常
@@ -1853,7 +1853,7 @@ int Del_sup(char *name,char *P_name)
     }
 };
 
-//函数名：Del_Member
+//函数名：Del_Trans
 //功能：删除完成人员节点，由Del_Node函数case 4调用
 //输入参数：name 完成人员名称，P_name 对应科技成果名称，PP_name 对应单位名称
 //返回值：int 1为有错，0为正常
@@ -1995,7 +1995,7 @@ void Query_pur(GtkWidget *button,struct query_judge *in)
     }
 }
 
-//函数名：Query_Achs
+//函数名：Query_SUP
 //功能：查询科技成果
 //输入参数：in 包含iter和名称的结构
 //返回值：无
@@ -2032,7 +2032,7 @@ void Query_sup(GtkWidget *button,struct query_judge *in)
     }
 }
 
-//函数名：Query_Member
+//函数名：Query_Trans
 //功能：查询完成人员
 //输入参数：in 包含iter和名称的结构
 //返回值：无
@@ -2120,9 +2120,9 @@ PUR_COM *PUR_search(char *P_name)
     }
 }
 
-//函数名：ACHS_search
+//函数名：SUP_search
 //功能：按名称搜索科技成果节点
-//输入参数：A_name 科技成果节点名称，ACHS 所在学院头科技成果节点指针
+//输入参数：A_name 科技成果节点名称，SUP 所在学院头科技成果节点指针
 //返回值：科技成果节点节点指针
 SUP_COM *SUP_search(char *S_name,SUP_COM *SUP)
 {
@@ -2142,9 +2142,9 @@ SUP_COM *SUP_search(char *S_name,SUP_COM *SUP)
     }
 }
 
-//函数名：MEMBER_search
+//函数名：TRANS_search
 //功能：按名称搜索完成人员节点
-//输入参数：M_name 完成人员节点名称，ACHS 所属科技成果头完成人员节点指针
+//输入参数：M_name 完成人员节点名称，SUP 所属科技成果头完成人员节点指针
 //返回值：完成人员节点节点指针
 TRANS *TRANS_search(char *T_name,TRANS *Trans)
 {
